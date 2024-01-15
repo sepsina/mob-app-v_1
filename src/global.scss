@@ -1,0 +1,27 @@
+
+/* Core CSS required for Ionic components to work properly */
+//@import "~@ionic/angular/css/core.css";
+
+
+//@import '@angular/material/_theming';
+
+html, body {
+    height: 100%;
+}
+
+@font-face {
+    font-family: 'appFont';
+    //font-style: normal;
+    //font-weight: normal;
+    src: url('./assets/fonts/RobotoMono-Regular.ttf');
+}
+
+* {
+    font-family: "appFont";
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    overflow: hidden;
+}
