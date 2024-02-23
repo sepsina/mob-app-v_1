@@ -1,29 +1,46 @@
-<div id="all-frame" resizeObserver (resize)="onResize($event)">
-    <div id="app-frame" #appRef>
-        <div id="sel-frame">
-            <mat-form-field id="type-sel">
-                <mat-select [formControl]="typeCtrl"
-                            (selectionChange)="selChanged($event)">
-                    <mat-option *ngFor="let type of selTypes" [value]="type">
-                        {{type}}
-                    </mat-option>
-                </mat-select>
-            </mat-form-field>
-            <button id="read-button"
-                    mat-stroked-button
-                    (click)="readSelected()"
-                    [disabled]="!udp.bridgesFlag || udpBusy">
-                <mat-icon>file_download</mat-icon>
-                Read
-            </button>
-        </div>
-        <div id="items-frame">
-            <div *ngFor="let item of itemsMap | keyvalue">
-                <div [ngSwitch]="item.value.type">
-                    <ssr *ngSwitchCase="g_const.ACTUATOR_ON_OFF" [onOff]="item.value"></ssr>
-                    <sensor *ngSwitchCase="g_const.SENSOR" [sensor]="item.value"></sensor>
-                </div>
+<div id="app-frame">
+    <div id="header">
+        <span id="sel-items">
+            {{getSelDesc()}}
+        </span>
+        <button id="read-button"
+                mat-stroked-button
+                (click)="readSelected()"
+                [disabled]="udpBusy">
+            <mat-icon>file_download</mat-icon>
+            Read
+        </button>
+
+    </div>
+    <div id="items-frame">
+        <div *ngFor="let item of itemsMap | keyvalue">
+            <div [ngSwitch]="item.value.type">
+                <ssr *ngSwitchCase="g_const.ACTUATOR_ON_OFF" [onOff]="item.value"></ssr>
+                <sensor *ngSwitchCase="g_const.SENSOR" [sensor]="item.value"></sensor>
             </div>
         </div>
+    </div>
+    <div id="footer">
+        <button id="sel-temp"
+                mat-stroked-button
+                (click)="selTemp()"
+                [disabled]="udpBusy">
+            <!-- <mat-icon>thermostat</mat-icon> -->
+            temperature
+        </button>
+        <button id="sel-rh"
+                mat-stroked-button
+                (click)="selRH()"
+                [disabled]="udpBusy">
+            <!-- <mat-icon>humidity</mat-icon> -->
+            humidity
+        </button>
+        <button id="sel-act"
+                mat-stroked-button
+                (click)="selOnOffAct()"
+                [disabled]="udpBusy">
+            <!-- <mat-icon>actuators</mat-icon> -->
+            on-off
+        </button>
     </div>
 </div>
