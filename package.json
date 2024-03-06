@@ -28,7 +28,6 @@
     "@capacitor/haptics": "4.0.1",
     "@capacitor/keyboard": "4.0.1",
     "@capacitor/status-bar": "4.0.1",
-    "@frontall/capacitor-udp": "^0.3.4",
     "@ionic-native/core": "^5.36.0",
     "@ionic-native/network-interface": "^5.36.0",
     "@ionic/angular": "^6.1.9",
